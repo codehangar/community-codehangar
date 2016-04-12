@@ -7,7 +7,7 @@ if [ "$TRAVIS_BRANCH" != "master" ]; then
   exit 1
 fi
 
-REPONAME=${TRAVIS_REPO_SLUG}
+REPONAME=ladies.codehangar.io
 REVISION=${TRAVIS_BUILD_NUMBER}
 REV_NAME=${REPONAME}-${REVISION}
 echo "REV_NAME:" ${REV_NAME}
