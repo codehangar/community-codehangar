@@ -1,0 +1,15 @@
+{
+  "name": "ladies.codehangar.io",
+  "version": "0.0.0",
+  "author": "Code Hangar",
+  "license": "ISC",
+  "engines": {
+    "node": "4.2.3",
+    "npm": ">=3.3.6"
+  },
+  "scripts": {
+    "deploy": "./deploy-dev.sh ladies.codehangar.io 1"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
