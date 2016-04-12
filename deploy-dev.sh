@@ -20,17 +20,27 @@ echo "REV_NAME:" ${REV_NAME}
 # Create tarball
 # tar -C dist -cvf artifacts/${REV_NAME}.tar .
 tar -C . -cvf ${REV_NAME}.tar .
+if [ $? -ne 0 ]; then
+  echo "Tarball Packaging Failed"
+  echo $?
+  exit $?
+fi
 
 # Create /var/www directory if not exists
 sshpass -e ssh root@datgoat.com "mkdir -p /var/www/${REV_NAME};"
+
+echo "Unpacking Tarball..."
 
 # Transfer tarball
 # scp artifacts/${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
 sshpass -e scp ${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
 if [ $? -ne 0 ]; then
   echo "Tarball Transfer Failed"
+  echo $?
   exit $?
 fi
+
+echo "Unpacking Tarball..."
 
 # Transfer tarball
 # Backup current package
