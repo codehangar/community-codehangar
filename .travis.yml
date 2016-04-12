@@ -8,4 +8,5 @@ addons:
 before_script:
 after_success:
   - export SSHPASS=$DEPLOY_PASS
+  - export TEST_ENV_VAL=heythere
   - ./deploy-dev.sh

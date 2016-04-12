@@ -11,6 +11,7 @@ REPONAME=ladies.codehangar.io
 REVISION=${TRAVIS_BUILD_NUMBER}
 REV_NAME=${REPONAME}-${REVISION}
 echo "REV_NAME:" ${REV_NAME}
+echo "TEST_ENV_VAL:" ${TEST_ENV_VAL}
 
 # npm install
 # bower install
