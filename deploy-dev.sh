@@ -32,7 +32,7 @@ if [ $CMD_RESULT -ne 0 ]; then
 fi
 
 # Create /var/www directory if not exists
-sshpass -e ssh root@datgoat.com "mkdir -p /var/www/${REV_NAME};"
+sshpass -e ssh -o StrictHostKeyChecking=no root@datgoat.com "mkdir -p /var/www/${REV_NAME};"
 CMD_RESULT=$?
 if [ $CMD_RESULT -ne 0 ]; then
   echo "Make remote directory Failed"
@@ -43,7 +43,7 @@ fi
 echo "Transferring Tarball..."
 # Transfer tarball
 # scp artifacts/${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
-sshpass -e scp ${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
+sshpass -e scp -o StrictHostKeyChecking=no ${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
 CMD_RESULT=$?
 if [ $CMD_RESULT -ne 0 ]; then
   echo "Tarball Transfer Failed"
@@ -56,7 +56,7 @@ echo "Unpacking Tarball..."
 # Backup current package
 # Position new package to be served
 # Remove the backup
-sshpass -e ssh root@datgoat.com "
+sshpass -e ssh -o StrictHostKeyChecking=no root@datgoat.com "
   mkdir -p /var/www/${REV_NAME};
   mkdir -p /var/www/${REPONAME};
   tar -xf /var/www/${REV_NAME}.tar -C /var/www/${REV_NAME};
