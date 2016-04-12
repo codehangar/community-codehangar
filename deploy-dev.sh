@@ -24,31 +24,31 @@ echo "TEST_VAR2:" ${TEST_VAR2}
 # Create tarball
 # tar -C dist -cvf artifacts/${REV_NAME}.tar .
 tar -C . -cvf ${REV_NAME}.tar .
-if [ $? -ne 0 ]; then
-  ERR=$?
+CMD_RESULT=$?
+if [ $CMD_RESULT -ne 0 ]; then
   echo "Tarball Packaging Failed"
-  echo $ERR
-  exit $ERR
+  echo $CMD_RESULT
+  exit $CMD_RESULT
 fi
 
 # Create /var/www directory if not exists
 sshpass -e ssh root@datgoat.com "mkdir -p /var/www/${REV_NAME};"
-if [ $? -ne 0 ]; then
-  ERR=$?
+CMD_RESULT=$?
+if [ $CMD_RESULT -ne 0 ]; then
   echo "Make remote directory Failed"
-  echo $ERR
-  exit $ERR
+  echo $CMD_RESULT
+  exit $CMD_RESULT
 fi
 
 echo "Transferring Tarball..."
 # Transfer tarball
 # scp artifacts/${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
 sshpass -e scp ${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
-if [ $? -ne 0 ]; then
-  ERR=$?
+CMD_RESULT=$?
+if [ $CMD_RESULT -ne 0 ]; then
   echo "Tarball Transfer Failed"
-  echo $ERR
-  exit $ERR
+  echo $CMD_RESULT
+  exit $CMD_RESULT
 fi
 
 echo "Unpacking Tarball..."
@@ -64,11 +64,11 @@ sshpass -e ssh root@datgoat.com "
   mv /var/www/$REV_NAME /var/www/${REPONAME};
   rm -rf /var/www/${REPONAME}_backup;
 "
-if [ $? -ne 0 ]; then
-  ERR=$?
+CMD_RESULT=$?
+if [ $CMD_RESULT -ne 0 ]; then
   echo "Unpacking Tarball Failed"
-  echo $ERR
-  exit $ERR
+  echo $CMD_RESULT
+  exit $CMD_RESULT
 fi
 
 exit 0
