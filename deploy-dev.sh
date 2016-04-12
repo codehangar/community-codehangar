@@ -29,6 +29,12 @@ fi
 # Create /var/www directory if not exists
 sshpass -e ssh root@datgoat.com "mkdir -p /var/www/${REV_NAME};"
 
+if [ $? -ne 0 ]; then
+  echo "Make remote directory Failed"
+  echo $?
+  exit $?
+fi
+
 echo "Unpacking Tarball..."
 
 # Transfer tarball
