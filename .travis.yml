@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '0.12'
+addons:
+  apt:
+    packages:
+      - sshpass
+before_script:
+after_success:
+  - export SSHPASS=$DEPLOY_PASS
+  - ./deploy-dev.sh
