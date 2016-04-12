@@ -12,6 +12,8 @@ REVISION=${TRAVIS_BUILD_NUMBER}
 REV_NAME=${REPONAME}-${REVISION}
 echo "REV_NAME:" ${REV_NAME}
 echo "TEST_ENV_VAL:" ${TEST_ENV_VAL}
+echo "TEST_ENV_VAL2:" ${TEST_ENV_VAL2}
+echo "TEST_VAR:" ${TEST_VAR}
 
 # npm install
 # bower install
@@ -29,15 +31,13 @@ fi
 
 # Create /var/www directory if not exists
 sshpass -e ssh root@datgoat.com "mkdir -p /var/www/${REV_NAME};"
-
 if [ $? -ne 0 ]; then
   echo "Make remote directory Failed"
   echo $?
   exit $?
 fi
 
-echo "Unpacking Tarball..."
-
+echo "Transferring Tarball..."
 # Transfer tarball
 # scp artifacts/${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
 sshpass -e scp ${REV_NAME}.tar root@datgoat.com:/var/www/${REV_NAME}.tar
@@ -48,7 +48,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Unpacking Tarball..."
-
 # Transfer tarball
 # Backup current package
 # Position new package to be served

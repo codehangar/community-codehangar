@@ -7,6 +7,7 @@ addons:
       - sshpass
 before_script:
 after_success:
-  - export SSHPASS=$DEPLOY_PASS
+  - export SSHPASS=${DEPLOY_PASS}
   - export TEST_ENV_VAL=heythere
+  - export TEST_ENV_VAL2=${TEST_VAR}
   - ./deploy-dev.sh
