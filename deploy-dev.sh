@@ -14,6 +14,7 @@ echo "REV_NAME:" ${REV_NAME}
 echo "TEST_ENV_VAL:" ${TEST_ENV_VAL}
 echo "TEST_ENV_VAL2:" ${TEST_ENV_VAL2}
 echo "TEST_VAR:" ${TEST_VAR}
+echo "TEST_VAR2:" ${TEST_VAR2}
 
 # npm install
 # bower install
