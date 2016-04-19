@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-    .module('utils.codehangar', [
+    .module('community.codehangar', [
       'ui.router',
       'ui.bootstrap'
     ]);
 
   angular
-    .module('utils.codehangar')
+    .module('community.codehangar')
     .run(function ($http) {
       $http.defaults.headers.common['Content-Type'] = 'application/json';
     });

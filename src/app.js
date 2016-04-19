@@ -22,4 +22,4 @@ require('./index.js')
 require('./index.routes.js')
 
 //JS VIEW CONTROLLERS
-require('./views/Utils/UtilsCtrl.js')
+require('./views/Ladies/LadiesCtrl.js')

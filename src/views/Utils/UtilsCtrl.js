@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('utils.codehangar')
+    .module('community.codehangar')
     .controller('UtilsCtrl', UtilsCtrl);
 
   function UtilsCtrl($scope, $timeout, $http, $window, $state, $location) {

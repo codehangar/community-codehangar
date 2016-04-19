@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('utils.codehangar')
+    .module('community.codehangar')
     .config(routeConfig);
 
   /** @ngInject */
@@ -15,9 +15,9 @@
         url: '/',
         views: {
           'content': {
-            templateUrl: 'views/Utils/Utils.html',
-            controller: 'UtilsCtrl',
-            controllerAs: 'UtilsCtrl'
+            templateUrl: 'views/Ladies/Ladies.html',
+            controller: 'LadiesCtrl',
+            controllerAs: 'LadiesCtrl'
           }
         }
       });

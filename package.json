@@ -1,5 +1,5 @@
 {
-  "name": "codehangar-ui",
+  "name": "community-codehangar",
   "version": "0.0.0",
   "author": "Code Hangar",
   "License": "ISC",
@@ -30,7 +30,6 @@
   "scripts": {
     "start": "node ./tools/start",
     "build": "node ./tools/build",
-    "serve": "gulp serve",
-    "deploy": "./deploy-dev.sh"
+    "serve": "gulp serve"
   }
 }
