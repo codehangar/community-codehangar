@@ -1,13 +1,23 @@
 language: node_js
 node_js:
-- '0.12'
+  - '5.10.1'
 addons:
   apt:
     packages:
       - sshpass
-before_script:
-after_success:
-  - export SSHPASS=${DEPLOY_PASS}
-  - export TEST_ENV_VAL=heythere
-  - export TEST_ENV_VAL2=${TEST_VAR}
-  - ./deploy-dev.sh
+install:
+  - npm install
+cache:
+  directories:
+    - node_modules
+script:
+  - npm run build
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: tools/deploy.sh
+  on:
+    branch: master
+notifications:
+  slack:
+    secure: M7yk+ZEBzDjZx6fNgVpR+ZnOJ/5pO8FnKDZ2E6TCh95E1qS6k0uDQQkrBN3PkaFiU/eh9z8vT3SjXMBqSscMhI4ss5gPbQlaTbU9qhzxzSWxHYK5EzKXI0wNGM9OZOI5y2u9qfE34is6aeZpPA62HBDEuLB9STw+hfAIj3VMxte/BMenku0f9KG8Kc+EHdxpPoyuRkZLRqSBu4O2mDe+B782w1Okq2GrXKw3ij3J9Upsh77745Jn45O1SLQjQPlmJbamEtphuJ/WtAfv4erN+rlEMbb//bxcBJjbCxlMOagkSjKmKSCkyCgiphEtVENhTyu1LXD20SDEAsUT7q9FNAgs+0GZQk/0ILI8hYKDu4NR8vNGWyWBQpEe9GKWs0Zd5oyGQK/S2tyxkMA0Lc7D0xdlfg8iDaatVr03OpfgJZ+b8IopvKV76VqkhMXq79uvyAT3hvvhwrID5TW1bHJyJR1wUSxY2pbAEQ5XdctMGEXxH7rKBVlsRsJOnm88pHyWRcRVlCY+fWZjM5naSmg7noKXXNXyy4AtVlEZEB0tj4KBzCajaD9xVYCLtyRpAgLJS7hyHNr7CWaVuZbkquSwxbPtMmLNYx/H1Jzt3f3FQyTBdY4i6aiNbTBOHvJymS8r1ls4Vp4qovq2LR0kAr975sL4xOMBYouGosUV3cmND2w=
